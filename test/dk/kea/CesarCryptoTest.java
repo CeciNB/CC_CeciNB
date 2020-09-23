@@ -5,102 +5,102 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CryptoTest {
+class CesarCryptoTest {
 
-    Crypto crypto;
+    CesarCrypto cesarCrypto;
     String test;
 
     @BeforeEach
     void setUp() {
-        crypto = new Crypto();
+        cesarCrypto = new CesarCrypto();
         test = "ABC abc 123";
     }
 
     @Test
     void threeToTheRight(){
-        crypto.setShift(3);
+        cesarCrypto.setShift(3);
         String expected = "DEF def 123";
-        String actual = crypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
     @Test
     void threeToTheLeft(){
-        crypto.setShift(-3);
+        cesarCrypto.setShift(-3);
         String expected = "XYZ xyz 123";
-        String actual = crypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
     @Test
     void twentySixToTheRight(){
-        crypto.setShift(26);
+        cesarCrypto.setShift(26);
         String expected = "ABC abc 123";
-        String actual = crypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
     @Test
     void twentySixToTheLeft(){
-        crypto.setShift(-26);
+        cesarCrypto.setShift(-26);
         String expected = "ABC abc 123";
-        String actual = crypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
     @Test
     void encryptDecryptFourLeft(){
-        crypto.setShift(-4);
+        cesarCrypto.setShift(-4);
         String expected = "ABC abc 123";
-        String crypted = crypto.encrypt(test);
-        String actual = crypto.decrypt(crypted);
+        String crypted = cesarCrypto.encrypt(test);
+        String actual = cesarCrypto.decrypt(crypted);
         assertEquals(expected,actual);
     }
 
     @Test
     void encryptDecryptSevenRight(){
-        crypto.setShift(7);
+        cesarCrypto.setShift(7);
         String expected = "ABC abc 123";
-        String crypted = crypto.encrypt(test);
-        String actual = crypto.decrypt(crypted);
+        String crypted = cesarCrypto.encrypt(test);
+        String actual = cesarCrypto.decrypt(crypted);
         assertEquals(expected,actual);
     }
 
     @Test
     void encryptDecryptOutOfRange(){
-        crypto.setShift(70);
+        cesarCrypto.setShift(70);
         String expected = "ABC abc 123";
-        String crypted = crypto.encrypt(test);
-        String actual = crypto.decrypt(crypted);
+        String crypted = cesarCrypto.encrypt(test);
+        String actual = cesarCrypto.decrypt(crypted);
         assertEquals(expected,actual);
     }
 
     @Test
     void encryptEmpty(){
-        crypto.setShift(70);
+        cesarCrypto.setShift(70);
         String expected = "";
-        String crypted = crypto.encrypt("");
-        String actual = crypto.decrypt(crypted);
+        String crypted = cesarCrypto.encrypt("");
+        String actual = cesarCrypto.decrypt(crypted);
         assertEquals(expected,actual);
     }
 
     @Test
     void getShift3(){
         int expected = 3;
-        crypto.setShift(expected);
-        int actual = crypto.getShift();
+        cesarCrypto.setShift(expected);
+        int actual = cesarCrypto.getShift();
         assertEquals(expected,actual);
     }
 
     @Test
     void getShift90(){
         int expected = 90;
-        crypto.setShift(expected);
-        int actual = crypto.getShift();
+        cesarCrypto.setShift(expected);
+        int actual = cesarCrypto.getShift();
         assertEquals(expected,actual);
     }
 
     @Test
     void getShiftminus(){
         int expected = -16;
-        crypto.setShift(expected);
-        int actual = crypto.getShift();
+        cesarCrypto.setShift(expected);
+        int actual = cesarCrypto.getShift();
         assertEquals(expected,actual);
     }
 

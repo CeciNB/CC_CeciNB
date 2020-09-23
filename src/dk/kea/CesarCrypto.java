@@ -1,13 +1,13 @@
 package dk.kea;
 
-public class Crypto {
+public class CesarCrypto implements ICrypto{
 
     private int shift;
 
-    public Crypto() {
+    public CesarCrypto() {
     }
 
-    public Crypto(int shift) {
+    public CesarCrypto(int shift) {
         this.shift = shift;
     }
 
@@ -40,4 +40,5 @@ public class Crypto {
     public void setShift(int shift) {
         this.shift = shift;
     }
+
 }
