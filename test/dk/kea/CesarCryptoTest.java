@@ -5,17 +5,28 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Cesar crypto test.
+ * @author CeciNB
+ */
 class CesarCryptoTest {
 
-    CesarCrypto cesarCrypto;
+    ICrypto cesarCrypto;
     String test;
 
+    /**
+     * Sets up.
+     * Makes new Crypto object berfore each test
+     */
     @BeforeEach
     void setUp() {
         cesarCrypto = new CesarCrypto();
         test = "ABC abc 123";
     }
 
+    /**
+     * Three to the right.
+     */
     @Test
     void threeToTheRight(){
         cesarCrypto.setShift(3);
@@ -23,6 +34,10 @@ class CesarCryptoTest {
         String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
+
+    /**
+     * Three to the left.
+     */
     @Test
     void threeToTheLeft(){
         cesarCrypto.setShift(-3);
@@ -30,6 +45,10 @@ class CesarCryptoTest {
         String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
+
+    /**
+     * Twenty six to the right.
+     */
     @Test
     void twentySixToTheRight(){
         cesarCrypto.setShift(26);
@@ -37,6 +56,10 @@ class CesarCryptoTest {
         String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
+
+    /**
+     * Twenty six to the left.
+     */
     @Test
     void twentySixToTheLeft(){
         cesarCrypto.setShift(-26);
@@ -44,6 +67,10 @@ class CesarCryptoTest {
         String actual = cesarCrypto.encrypt(test);
         assertEquals(expected,actual);
     }
+
+    /**
+     * Encrypt decrypt four left.
+     */
     @Test
     void encryptDecryptFourLeft(){
         cesarCrypto.setShift(-4);
@@ -53,6 +80,9 @@ class CesarCryptoTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Encrypt decrypt seven right.
+     */
     @Test
     void encryptDecryptSevenRight(){
         cesarCrypto.setShift(7);
@@ -62,6 +92,9 @@ class CesarCryptoTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Encrypt decrypt out of range.
+     */
     @Test
     void encryptDecryptOutOfRange(){
         cesarCrypto.setShift(70);
@@ -71,6 +104,9 @@ class CesarCryptoTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Encrypt empty.
+     */
     @Test
     void encryptEmpty(){
         cesarCrypto.setShift(70);
@@ -80,6 +116,9 @@ class CesarCryptoTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Get shift 3.
+     */
     @Test
     void getShift3(){
         int expected = 3;
@@ -88,6 +127,9 @@ class CesarCryptoTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Get shift 90.
+     */
     @Test
     void getShift90(){
         int expected = 90;
@@ -96,6 +138,9 @@ class CesarCryptoTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Get shiftminus.
+     */
     @Test
     void getShiftminus(){
         int expected = -16;

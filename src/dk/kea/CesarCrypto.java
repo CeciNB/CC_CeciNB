@@ -1,5 +1,10 @@
 package dk.kea;
 
+/**
+ * The type Cesar crypto.
+ * Only works if text is A-Z or a-z
+ * @author CeciNB
+ */
 public class CesarCrypto implements ICrypto{
 
     private int shift;
@@ -7,6 +12,11 @@ public class CesarCrypto implements ICrypto{
     public CesarCrypto() {
     }
 
+    /**
+     * Instantiates a new Cesar crypto.
+     *
+     * @param shift how many places you wish to shift
+     */
     public CesarCrypto(int shift) {
         this.shift = shift;
     }

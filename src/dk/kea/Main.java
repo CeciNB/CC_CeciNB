@@ -1,7 +1,16 @@
 package dk.kea;
 
+/**
+ * @author CeciNB
+ *
+ */
 public class Main {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         System.out.println("Cesars Crypt - Only works if text is A-Z or a-z");
         CesarCrypto cesarCrypto = new CesarCrypto(90);
