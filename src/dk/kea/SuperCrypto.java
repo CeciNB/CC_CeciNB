@@ -6,28 +6,14 @@ package dk.kea;
  * @author CeciNB
  */
 public class SuperCrypto implements ICrypto{
-    private int shift;
     private int ascii;
 
     public SuperCrypto() {
+        ascii = 255;
     }
 
-    /**
-     * Instantiates a new Super crypto.
-     *
-     * @param shift the how many places you wish to shift
-     * @param ascii out of ascii values you want to use.
-     */
-    public SuperCrypto(int shift, int ascii) {
-        this.shift = shift;
-        if (ascii < 0)
-            ascii = ascii + 255;
-        else if (ascii > 255)
-            ascii = ascii - 255;
-        this.ascii = ascii;
-    }
-
-    public String encrypt(String text) {
+    public String encrypt(String text, int shift) {
+        shift = ascii + shift % ascii;
         StringBuilder result = new StringBuilder();
         char[] chars = text.toCharArray();
         for (char i : chars) {
@@ -37,16 +23,8 @@ public class SuperCrypto implements ICrypto{
         return result.toString();
     }
 
-    public String decrypt(String text) {
+    public String decrypt(String text, int shift) {
         shift = shift * -1;
-        return encrypt(text);
-    }
-
-    public int getShift() {
-        return shift;
-    }
-
-    public void setShift(int shift) {
-        this.shift = shift;
+        return encrypt(text, shift);
     }
 }

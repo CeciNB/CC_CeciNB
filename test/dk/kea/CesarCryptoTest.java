@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class CesarCryptoTest {
 
-    ICrypto cesarCrypto;
+    CesarCrypto cesarCrypto;
     String test;
 
     /**
@@ -29,9 +29,8 @@ class CesarCryptoTest {
      */
     @Test
     void threeToTheRight(){
-        cesarCrypto.setShift(3);
         String expected = "DEF def 123";
-        String actual = cesarCrypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test,3);
         assertEquals(expected,actual);
     }
 
@@ -40,9 +39,8 @@ class CesarCryptoTest {
      */
     @Test
     void threeToTheLeft(){
-        cesarCrypto.setShift(-3);
         String expected = "XYZ xyz 123";
-        String actual = cesarCrypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test,-3);
         assertEquals(expected,actual);
     }
 
@@ -51,9 +49,8 @@ class CesarCryptoTest {
      */
     @Test
     void twentySixToTheRight(){
-        cesarCrypto.setShift(26);
         String expected = "ABC abc 123";
-        String actual = cesarCrypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test,26);
         assertEquals(expected,actual);
     }
 
@@ -62,9 +59,8 @@ class CesarCryptoTest {
      */
     @Test
     void twentySixToTheLeft(){
-        cesarCrypto.setShift(-26);
         String expected = "ABC abc 123";
-        String actual = cesarCrypto.encrypt(test);
+        String actual = cesarCrypto.encrypt(test,-26);
         assertEquals(expected,actual);
     }
 
@@ -73,10 +69,9 @@ class CesarCryptoTest {
      */
     @Test
     void encryptDecryptFourLeft(){
-        cesarCrypto.setShift(-4);
         String expected = "ABC abc 123";
-        String crypted = cesarCrypto.encrypt(test);
-        String actual = cesarCrypto.decrypt(crypted);
+        String crypted = cesarCrypto.encrypt(test, -4);
+        String actual = cesarCrypto.decrypt(crypted, -4);
         assertEquals(expected,actual);
     }
 
@@ -85,10 +80,9 @@ class CesarCryptoTest {
      */
     @Test
     void encryptDecryptSevenRight(){
-        cesarCrypto.setShift(7);
         String expected = "ABC abc 123";
-        String crypted = cesarCrypto.encrypt(test);
-        String actual = cesarCrypto.decrypt(crypted);
+        String crypted = cesarCrypto.encrypt(test,7);
+        String actual = cesarCrypto.decrypt(crypted,7);
         assertEquals(expected,actual);
     }
 
@@ -97,10 +91,9 @@ class CesarCryptoTest {
      */
     @Test
     void encryptDecryptOutOfRange(){
-        cesarCrypto.setShift(70);
         String expected = "ABC abc 123";
-        String crypted = cesarCrypto.encrypt(test);
-        String actual = cesarCrypto.decrypt(crypted);
+        String crypted = cesarCrypto.encrypt(test,70);
+        String actual = cesarCrypto.decrypt(crypted,70);
         assertEquals(expected,actual);
     }
 
@@ -109,43 +102,9 @@ class CesarCryptoTest {
      */
     @Test
     void encryptEmpty(){
-        cesarCrypto.setShift(70);
         String expected = "";
-        String crypted = cesarCrypto.encrypt("");
-        String actual = cesarCrypto.decrypt(crypted);
-        assertEquals(expected,actual);
-    }
-
-    /**
-     * Get shift 3.
-     */
-    @Test
-    void getShift3(){
-        int expected = 3;
-        cesarCrypto.setShift(expected);
-        int actual = cesarCrypto.getShift();
-        assertEquals(expected,actual);
-    }
-
-    /**
-     * Get shift 90.
-     */
-    @Test
-    void getShift90(){
-        int expected = 90;
-        cesarCrypto.setShift(expected);
-        int actual = cesarCrypto.getShift();
-        assertEquals(expected,actual);
-    }
-
-    /**
-     * Get shiftminus.
-     */
-    @Test
-    void getShiftminus(){
-        int expected = -16;
-        cesarCrypto.setShift(expected);
-        int actual = cesarCrypto.getShift();
+        String crypted = cesarCrypto.encrypt("", 70);
+        String actual = cesarCrypto.decrypt(crypted, 70);
         assertEquals(expected,actual);
     }
 

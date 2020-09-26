@@ -5,9 +5,7 @@ package dk.kea;
  * Only works if text is A-Z or a-z
  * @author CeciNB
  */
-public class CesarCrypto implements ICrypto{
-
-    private int shift;
+public class CesarCrypto /*implements ICrypto*/{
 
     public CesarCrypto() {
     }
@@ -17,12 +15,9 @@ public class CesarCrypto implements ICrypto{
      *
      * @param shift how many places you wish to shift
      */
-    public CesarCrypto(int shift) {
-        this.shift = shift;
-    }
 
-    public String encrypt(String text) {
-        shift = 26 + (shift % 26);
+    public String encrypt(String text, int shift) {
+        shift = (26 + shift) % 26;
         StringBuilder result = new StringBuilder();
         for (char i : text.toCharArray()) {
             if (Character.isLetter(i)) {
@@ -38,17 +33,9 @@ public class CesarCrypto implements ICrypto{
         return result.toString();
     }
 
-    public String decrypt(String text) {
-        shift = 26 - (shift % 26);
-        return encrypt(text);
-    }
-
-    public int getShift() {
-        return shift;
-    }
-
-    public void setShift(int shift) {
-        this.shift = shift;
+    public String decrypt(String text, int shift) {
+        shift = (26 - shift) % 26;
+        return encrypt(text, shift);
     }
 
 }

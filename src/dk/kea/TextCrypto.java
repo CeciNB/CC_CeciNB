@@ -5,22 +5,13 @@ package dk.kea;
 public class TextCrypto implements ICrypto{
 
     @Override
-    public String encrypt(String text) {
+    public String encrypt(String text, int shift) {
         return null;
     }
 
     @Override
-    public String decrypt(String text) {
+    public String decrypt(String text, int shift) {
         return null;
     }
 
-    @Override
-    public int getShift() {
-        return 0;
-    }
-
-    @Override
-    public void setShift(int shift) {
-
-    }
 }
