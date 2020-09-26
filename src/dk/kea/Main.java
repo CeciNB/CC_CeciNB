@@ -12,19 +12,26 @@ public class Main {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        cesarCrypto();
-        System.out.println(" ");
-        superCrypto();
+        //cesarCrypto();
+        //System.out.println(" ");
+        //superCrypto();
+        String superOriginal = FileHandler.readFile("resources/AliceInWonderland.txt");
+        SuperCrypto superCrypto = new SuperCrypto();
+        String superEncrypted = superCrypto.encrypt(superOriginal,40);
+        System.out.println("Encrypted text: " + superEncrypted);
+        String superDecrypted = superCrypto.decrypt(superEncrypted,40);
+        System.out.println("Decrypted text: " + superDecrypted);
+
     }
 
     public static void cesarCrypto(){
         System.out.println("Cesars Crypt - Only works if text is A-Z or a-z");
         CesarCrypto cesarCrypto = new CesarCrypto();
-        String original = "ABC abc Numse ,.-prut";
+        String original = "ALICE'S ADVENTURES IN WONDERLAND";
         System.out.println("Original text: " + original);
-        String encrypted = cesarCrypto.encrypt(original, 90);
+        String encrypted = cesarCrypto.encrypt(original, 1);
         System.out.println("Encrypted text: " + encrypted);
-        String decrypted = cesarCrypto.decrypt(encrypted, 90);
+        String decrypted = cesarCrypto.decrypt(encrypted, 1);
         System.out.println("Decrypted text: " + decrypted);
     }
 
