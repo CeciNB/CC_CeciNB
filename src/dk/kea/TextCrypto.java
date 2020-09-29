@@ -8,6 +8,7 @@ import java.util.Random;
 public class TextCrypto{
 
     public String encrypt(String text) {
+        int shift = 0;
         Random random = new Random(26);
         StringBuilder result = new StringBuilder();
         for (char i : text.toCharArray()) {
@@ -25,7 +26,8 @@ public class TextCrypto{
     }
 
     public HashMap<Integer,String> quessShift(){
-        result =
+        HashMap<Integer,String> result = new HashMap<>();
+        return result;
     }
 
     public String decrypt(String text, int shift) {
